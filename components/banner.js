@@ -1,9 +1,13 @@
-const Banner = () => {
+import styles from "./banner.module.css";
+
+const Banner = (props) => {
   return (
-    <div>
-      <h1>My Art Shop</h1>
-      <p>discover my art and rate it!</p>
-      <button>View stores nearby</button>
+    <div className={styles.container}>
+      <h1 className={styles.title}>My Art Shop</h1>
+      <p className={styles.subTitle}>discover my art and rate it!</p>
+      <div className={styles.buttonWrapper}>
+        <button className={styles.button}>view stores nearby</button>
+      </div>
     </div>
   );
 };

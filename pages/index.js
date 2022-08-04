@@ -1,9 +1,12 @@
 import Head from "next/head";
-
+import Image from "next/image";
 import Banner from "../components/banner";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const handleOnBannerBtnClick = () => {
+    console.log("hi banner btn");
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +16,18 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Banner />
+        <Banner
+          buttonText="view stores nearby"
+          handleOnClick={handleOnBannerBtnClick}
+        />
+        <div className={styles.heroImage}>
+          <Image
+            src="/static/mega-creator-removebg-preview.png"
+            alt="artist"
+            width={700}
+            height={400}
+          />
+        </div>
       </main>
 
       <footer className={styles.footer}></footer>
