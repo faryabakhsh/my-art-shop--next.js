@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Banner from "../components/banner";
+import Card from "../components/card";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -26,6 +27,22 @@ export default function Home() {
             alt="artist"
             width={700}
             height={400}
+          />
+        </div>
+        <br />
+        <div className={styles.cardLayout}>
+          <Card
+            className={styles.card}
+            name="Stallion"
+            imgUrl="/static/mega-creator-removebg-preview.png"
+            href="/painting/stallion"
+          />
+
+          <Card
+            className={styles.card}
+            name="Stallion"
+            imgUrl="/static/mega-creator-removebg-preview.png"
+            href="/painting/stallion"
           />
         </div>
       </main>
