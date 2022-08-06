@@ -3,8 +3,18 @@ import Image from "next/image";
 import Banner from "../components/banner";
 import Card from "../components/card";
 import styles from "../styles/Home.module.css";
+import details from "../data/details.json";
 
-export default function Home() {
+export async function getStaticProps(context) {
+  return {
+    props: {
+      details,
+    }, // will be passed to the page component as props
+  };
+}
+
+export default function Home(props) {
+  console.log("props", props);
   const handleOnBannerBtnClick = () => {
     console.log("hi banner btn");
   };
@@ -29,21 +39,20 @@ export default function Home() {
             height={400}
           />
         </div>
+
         <br />
         <div className={styles.cardLayout}>
-          <Card
-            className={styles.card}
-            name="Stallion"
-            imgUrl="/static/mega-creator-removebg-preview.png"
-            href="/painting/stallion"
-          />
-
-          <Card
-            className={styles.card}
-            name="Stallion"
-            imgUrl="/static/mega-creator-removebg-preview.png"
-            href="/painting/stallion"
-          />
+          {props.details.map((paintings) => {
+            return (
+              <Card
+                className={styles.card}
+                key={paintings.id}
+                name={paintings.name}
+                imgUrl={paintings.imgUrl}
+                href={`/painting/${paintings.id}`}
+              />
+            );
+          })}
         </div>
       </main>
 
