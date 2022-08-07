@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 import details from "../data/details.json";
 
 export async function getStaticProps(context) {
+  console.log("hi getstartic props");
   return {
     props: {
       details,
@@ -40,7 +41,7 @@ export default function Home(props) {
           />
         </div>
 
-        <br />
+        <h2 className={styles.heading2}>My Paintings</h2>
         <div className={styles.cardLayout}>
           {props.details.map((paintings) => {
             return (
