@@ -4,6 +4,8 @@ import detailsData from "../../data/details.json";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../../styles/Painting.module.css";
+import cls from "classnames";
+import { useState } from "react";
 
 export function getStaticProps(StaticProps) {
   const params = StaticProps.params;
@@ -33,6 +35,13 @@ export function getStaticPaths() {
 const Paintings = (props) => {
   const router = useRouter();
 
+  const [votingCount, setVotingCount] = useState(1);
+
+  const handleUpvoteButton = () => {
+    let count = votingCount + 1;
+    setVotingCount(count);
+  };
+
   return (
     <div className={styles.layout}>
       <Head>
@@ -56,8 +65,40 @@ const Paintings = (props) => {
             alt="store image"
           />
         </div>
-        <div className={styles.col2}>
-          <p>{props.details.address}</p>
+        <div className={cls("glass", styles.col2)}>
+          <div className={styles.iconWrapper}>
+            <Image
+              src="/static/icons/info.svg"
+              width="24"
+              height="24"
+              alt="info icon"
+            />
+            <p className={styles.text}>{props.details.address}</p>
+          </div>
+
+          <div className={styles.iconWrapper}>
+            <Image
+              src="/static/icons/info.svg"
+              width="24"
+              height="24"
+              alt="info icon"
+            />
+            <p className={styles.text}>{props.details.neighbourhood}</p>
+          </div>
+
+          <div className={styles.iconWrapper}>
+            <Image
+              src="/static/icons/star.svg"
+              width="24"
+              height="24"
+              alt="star icon"
+            />
+            <p className={styles.text}>{votingCount}</p>
+          </div>
+
+          <button className={styles.upvoteButton} onClick={handleUpvoteButton}>
+            Up vote!
+          </button>
         </div>
       </div>
     </div>

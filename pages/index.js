@@ -6,7 +6,6 @@ import styles from "../styles/Home.module.css";
 import details from "../data/details.json";
 
 export async function getStaticProps(context) {
-  console.log("hi getstartic props");
   return {
     props: {
       details,
@@ -15,10 +14,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Home(props) {
-  console.log("props", props);
-  const handleOnBannerBtnClick = () => {
-    console.log("hi banner btn");
-  };
+  const handleOnBannerBtnClick = () => {};
   return (
     <div className={styles.container}>
       <Head>
